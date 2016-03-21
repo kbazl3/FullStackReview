@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app='menuApp'>
+    <head>
+        <meta charset="utf-8">
+        <title>Menu</title>
+    </head>
+    <body ng-controller="mainCtrl">
+
+        <div ng-if="selectedReview">{{selectedReview.rating}} by {{selectedReview.reviewer}}</div>
+
+        <div ng-repeat="food in foods">
+            {{food.name}}, {{food.color}}
+            <button ng-click="deleteFood(food._id)">Delete food</button>
+            <ul>
+                <li ng-repeat="review in food.reviews">{{review.reviewer}}
+                    <button ng-click="getReview(food._id, review._id)">Find Review</button>
+                </li>
+            </ul>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+        <script src="./app.js" charset="utf-8"></script>
+        <script src="./mainCtrl.js" charset="utf-8"></script>
+    </body>
+</html>
